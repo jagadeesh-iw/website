@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sustainability | Impact Water Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F8FC;
+    --paper-dim:#E6EFF8;
+    --ink:#0B1F33;
+    --navy:#0F3868;
+    --navy-dim:#0A2C52;
+    --blue:#1D5FA8;
+    --blue-dim:#164B87;
+    --sky:#34B2CE;
+    --line: rgba(11,31,51,0.14);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  svg{ display:block; }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;
+    top:0; left:0; right:0;
+    z-index:50;
+    padding:16px 0;
+    background:var(--paper);
+    box-shadow:0 1px 0 var(--line);
+  }
+  nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .nav-links{
+    display:flex;
+    gap:36px;
+    font-size:14.5px;
+  }
+  .nav-links a{
+    color:var(--ink);
+    transition:color .3s ease;
+    padding-bottom:3px;
+    border-bottom:1px solid transparent;
+  }
+  .nav-links a.is-active{ border-bottom-color:currentColor; }
+  .nav-links a:hover{ border-bottom-color:currentColor; }
+  @media (max-width:720px){ .nav-links{ display:none; } }
+
+  .nav-icons{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-left:8px;
+  }
+  .nav-icon{
+    position:relative;
+    display:flex;
+    color:var(--ink);
+  }
+  .nav-icon svg{ width:20px; height:20px; }
+  .cart-badge{
+    position:absolute;
+    top:-7px; right:-10px;
+    min-width:16px; height:16px;
+    padding:0 4px;
+    border-radius:8px;
+    background:var(--blue);
+    color:#fff;
+    font-size:10px;
+    font-weight:600;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    padding:13px 26px;
+    font-size:14.5px;
+    font-weight:500;
+    border-radius:2px;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    white-space:nowrap;
+  }
+  .btn-solid{ background:var(--blue); color:#fff; }
+  .btn-solid:hover{ background:var(--blue-dim); transform:translateY(-1px); }
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,0.5);
+    color:#fff;
+  }
+  .btn-ghost:hover{ border-color:#fff; }
+
+  /* ---------- PAGE HERO ---------- */
+  .sus-hero{
+    padding:96px 0 64px;
+    border-bottom:1px solid var(--line);
+  }
+  .sus-hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:64px;
+    align-items:center;
+  }
+  .sus-hero-img{
+    aspect-ratio:1 / 1;
+    border-radius:20px;
+    overflow:hidden;
+    background:var(--paper-dim);
+  }
+  .sus-hero-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .sus-hero .intro-label{
+    font-size:14.5px;
+    color:var(--blue-dim);
+    margin-bottom:14px;
+  }
+  .sus-hero h1{
+    font-size:clamp(30px, 4.2vw, 48px);
+    font-weight:500;
+    line-height:1.28;
+  }
+  .sus-hero p{
+    margin-top:20px;
+    font-size:15.5px;
+    line-height:1.7;
+    max-width:56ch;
+    color:rgba(11,31,51,0.72);
+  }
+  @media (max-width:800px){
+    .sus-hero .wrap{ grid-template-columns:1fr; gap:32px; }
+    .sus-hero-img{ order:-1; max-width:360px; }
+  }
+  .trust-row{
+    margin-top:34px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 28px;
+  }
+  .trust-row span{
+    font-size:13px;
+    letter-spacing:0.02em;
+    color:var(--blue-dim);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .trust-row span::before{
+    content:'';
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--sky);
+    display:inline-block;
+  }
+
+  /* ---------- PILLARS ---------- */
+  .pillars{
+    padding:96px 0;
+  }
+  .pillars-head{
+    max-width:56ch;
+    margin-bottom:56px;
+  }
+  .pillars-head .intro-label{
+    font-size:14.5px;
+    color:var(--blue-dim);
+    margin-bottom:14px;
+  }
+  .pillars-head h2{
+    font-size:clamp(26px, 3.2vw, 34px);
+    font-weight:500;
+    line-height:1.3;
+  }
+  .pillar-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .pillar-card{
+    padding:34px 28px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    transition:box-shadow .3s ease, transform .3s ease;
+  }
+  .pillar-card:hover{
+    box-shadow:0 24px 48px rgba(11,31,51,0.08);
+    transform:translateY(-3px);
+  }
+  .pillar-icon{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:rgba(79,184,220,0.14);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+  }
+  .pillar-icon svg{ width:20px; height:20px; }
+  .pillar-img{
+    aspect-ratio:1 / 1;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:22px;
+    background:var(--paper-dim);
+  }
+  .pillar-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .5s ease;
+  }
+  .pillar-card:hover .pillar-img img{ transform:scale(1.05); }
+  .pillar-card h3{
+    font-size:18px;
+    font-weight:500;
+    margin-bottom:10px;
+  }
+  .pillar-card p{
+    font-size:14.5px;
+    line-height:1.65;
+    color:rgba(11,31,51,0.72);
+  }
+  @media (max-width:900px){
+    .pillar-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------- BRIGHT BLUE BACKGROUND (shared by impact + comparison) ---------- */
+  .bubble-section{
+    position:relative;
+    background:linear-gradient(165deg, var(--blue) 0%, var(--navy) 100%);
+    overflow:hidden;
+    padding:100px 0;
+  }
+  .bubble-section .wrap{ position:relative; z-index:2; }
+
+  .section-eyebrow-light{
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.75);
+    margin-bottom:16px;
+  }
+  .bubble-section h2{
+    font-family:'Inter', sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    font-size:clamp(26px, 3.6vw, 40px);
+    color:#fff;
+    line-height:1.2;
+    max-width:20ch;
+  }
+  .bubble-section .section-sub{
+    margin-top:16px;
+    font-size:15px;
+    line-height:1.7;
+    max-width:52ch;
+    color:rgba(255,255,255,0.82);
+  }
+  .glass-card{
+    margin-top:48px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.28);
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    padding:52px 44px 40px;
+  }
+
+  /* ---------- CO2 CHART ---------- */
+  .co2-chart{
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:64px;
+    padding:0 12px 0;
+    border-bottom:2px solid rgba(255,255,255,0.35);
+  }
+  .bar-group{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:120px;
+  }
+  .bar-value{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:500;
+    color:#fff;
+    margin-bottom:12px;
+    white-space:nowrap;
+  }
+  .bar{
+    width:82px;
+    border-radius:10px 10px 3px 3px;
+  }
+  .bar-hero{
+    background:#fff;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.6), 0 10px 30px rgba(255,255,255,0.35);
+  }
+  .bar-muted{
+    background:rgba(255,255,255,0.22);
+    border:1px solid rgba(255,255,255,0.4);
+    backdrop-filter:blur(2px);
+  }
+  .bar-label{
+    margin-top:16px;
+    font-size:14.5px;
+    font-weight:500;
+    color:rgba(255,255,255,0.88);
+  }
+  .bar-tag{
+    margin-top:8px;
+    font-size:11.5px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--navy);
+    background:#fff;
+    padding:4px 10px;
+    border-radius:20px;
+  }
+  .bar-ratio{
+    margin-top:8px;
+    font-size:12px;
+    color:rgba(255,255,255,0.6);
+  }
+  @media (max-width:700px){
+    .co2-chart{ gap:28px; }
+    .bar-group{ width:auto; flex:1; }
+    .bar{ width:56px; }
+  }
+
+  /* ---------- COMPARISON SCORECARDS ---------- */
+  .score-grid{
+    margin-top:48px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    align-items:start;
+  }
+  .score-card{
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.22);
+    border-radius:20px;
+    padding:28px 24px;
+  }
+  .score-card.is-best{
+    background:rgba(255,255,255,0.15);
+    border-color:rgba(255,255,255,0.55);
+    box-shadow:0 20px 40px rgba(6,26,50,0.25);
+    transform:translateY(-8px);
+  }
+  .score-card-head{
+    margin-bottom:18px;
+  }
+  .score-card-head h3{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:500;
+    color:#fff;
+  }
+  .score-badge{
+    display:inline-block;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--navy);
+    background:#fff;
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  .score-row{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:11px 0;
+    border-top:1px solid rgba(255,255,255,0.14);
+  }
+  .score-row:first-of-type{ border-top:none; }
+  .score-icon{
+    flex:none;
+    width:20px; height:20px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    line-height:1;
+    margin-top:1px;
+  }
+  .icon-good{ background:#fff; color:var(--navy); font-weight:700; }
+  .icon-bad{ border:1.4px solid rgba(255,255,255,0.55); color:rgba(255,255,255,0.75); }
+  .icon-mid{ border:1.4px solid rgba(255,255,255,0.4); color:rgba(255,255,255,0.6); }
+  .score-label{
+    display:block;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:rgba(255,255,255,0.55);
+    margin-bottom:3px;
+  }
+  .score-value{
+    display:block;
+    font-size:14px;
+    line-height:1.4;
+    color:rgba(255,255,255,0.92);
+  }
+  .is-best .score-value{ color:#fff; font-weight:500; }
+  @media (max-width:900px){
+    .score-grid{ grid-template-columns:1fr; }
+    .score-card.is-best{ transform:none; order:-1; }
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline-section{
+    background:var(--navy);
+    color:var(--paper);
+    padding:100px 0;
+  }
+  .timeline-head{
+    max-width:52ch;
+    margin-bottom:64px;
+  }
+  .timeline-head .intro-label{
+    font-size:14.5px;
+    color:var(--sky);
+    margin-bottom:14px;
+  }
+  .timeline-head h2{
+    font-size:clamp(26px, 3.2vw, 34px);
+    color:#fff;
+    font-weight:500;
+    line-height:1.3;
+  }
+  .timeline{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0;
+    position:relative;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute;
+    top:22px;
+    left:0;
+    right:0;
+    height:1px;
+    background:rgba(244,248,252,0.18);
+  }
+  .timeline-step{
+    position:relative;
+    padding-right:24px;
+  }
+  .timeline-dot{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:var(--navy-dim);
+    border:1px solid rgba(244,248,252,0.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:24px;
+    position:relative;
+    z-index:2;
+  }
+  .timeline-dot svg{ width:18px; height:18px; }
+  .timeline-step h3{
+    font-size:16px;
+    font-weight:500;
+    color:#fff;
+    margin-bottom:8px;
+  }
+  .timeline-step p{
+    font-size:13.5px;
+    line-height:1.6;
+    color:rgba(244,248,252,0.68);
+    max-width:26ch;
+  }
+  .timeline-step .step-no{
+    position:absolute;
+    top:0;
+    right:24px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:13px;
+    color:rgba(244,248,252,0.4);
+  }
+  @media (max-width:900px){
+    .timeline{ grid-template-columns:1fr; gap:36px; }
+    .timeline::before{ display:none; }
+    .timeline-step{ padding-right:0; }
+  }
+
+  /* ---------- QUOTE ---------- */
+  .quote-band{
+    padding:100px 0;
+  }
+  .quote-band blockquote{
+    margin:0 auto;
+    max-width:22ch;
+    text-align:center;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(24px, 3.6vw, 38px);
+    line-height:1.45;
+    color:var(--ink);
+  }
+  .quote-band .quote-mark{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:52px;
+    color:var(--sky);
+    margin-bottom:8px;
+    text-align:center;
+    line-height:1;
+  }
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .certs{
+    padding:0 0 110px;
+  }
+  .certs-inner{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    padding:44px 40px;
+    background:var(--paper-dim);
+    border-radius:8px;
+  }
+  .cert-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .cert-item .cert-icon{
+    width:36px; height:36px;
+    border-radius:50%;
+    background:#fff;
+    border:1px solid rgba(21,74,133,0.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .cert-item .cert-icon svg{ width:16px; height:16px; }
+  .cert-item span{
+    font-size:14px;
+    color:var(--ink);
+    font-weight:500;
+  }
+  @media (max-width:800px){
+    .certs-inner{ flex-direction:column; align-items:flex-start; }
+  }
+
+  /* ---------- CTA ---------- */
+  .cta{
+    background:var(--navy);
+    color:var(--paper);
+    padding:90px 0;
+  }
+  .cta .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .cta h2{
+    font-size:clamp(24px, 3vw, 32px);
+    color:#fff;
+    font-weight:500;
+    max-width:18ch;
+  }
+  .cta p{
+    margin-top:14px;
+    font-size:14.5px;
+    line-height:1.6;
+    color:rgba(244,248,252,0.7);
+    max-width:38ch;
+  }
+  .cta-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy-dim);
+    color:rgba(244,248,252,0.7);
+    padding:60px 0 34px;
+    font-size:14px;
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    padding-bottom:34px;
+    border-bottom:1px solid rgba(244,248,252,0.14);
+  }
+  footer .brand{ color:#fff; }
+  .foot-links{ display:flex; gap:28px; flex-wrap:wrap; }
+  .foot-links a{ color:rgba(244,248,252,0.7); }
+  .foot-links a:hover{ color:#fff; }
+  .foot-bottom{
+    padding-top:22px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:13px;
+    color:rgba(244,248,252,0.45);
+  }
+
+  /* ---------- LAUNCH POPUP ---------- */
+  .popup-overlay{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:rgba(8,20,35,0.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .35s ease;
+  }
+  .popup-overlay.is-open{
+    opacity:1;
+    visibility:visible;
+  }
+  .popup{
+    position:relative;
+    width:100%;
+    max-width:820px;
+    max-height:88vh;
+    background:var(--paper);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(8,20,35,0.35);
+    transform:translateY(14px) scale(0.98);
+    transition:transform .35s ease;
+  }
+  .popup-overlay.is-open .popup{
+    transform:translateY(0) scale(1);
+  }
+  .popup-scroll{
+    max-height:88vh;
+    overflow-y:auto;
+    display:grid;
+    grid-template-columns:0.8fr 1fr;
+  }
+  .popup-visual{
+    position:relative;
+    background:var(--paper-dim);
+    min-height:280px;
+  }
+  .popup-visual img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .popup-panel{
+    padding:44px 40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .popup-eyebrow{
+    font-size:13px;
+    color:var(--blue-dim);
+    margin-bottom:10px;
+  }
+  .popup-panel h2{
+    font-size:clamp(22px, 2.6vw, 28px);
+    line-height:1.3;
+    font-weight:500;
+  }
+  .popup-panel p{
+    margin-top:14px;
+    font-size:14.5px;
+    line-height:1.65;
+    color:rgba(11,31,51,0.72);
+    max-width:36ch;
+  }
+  .popup-buy{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:26px;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+  }
+  .popup-buy a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 18px;
+    border-radius:3px;
+    font-size:14.5px;
+    font-weight:500;
+    transition:background .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .popup-buy a span.store{ display:flex; flex-direction:column; }
+  .popup-buy a span.store small{
+    font-weight:400;
+    font-size:12px;
+    color:inherit;
+    opacity:0.7;
+    margin-top:2px;
+  }
+  .popup-buy .buy-blinkit{
+    background:var(--blue);
+    color:#fff;
+  }
+  .popup-buy .buy-blinkit:hover{ background:var(--blue-dim); transform:translateY(-1px); }
+  .popup-buy .buy-amazon{
+    border:1px solid rgba(11,31,51,0.25);
+    color:var(--ink);
+  }
+  .popup-buy .buy-amazon:hover{ border-color:var(--ink); transform:translateY(-1px); }
+  .popup-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,0.85);
+    color:var(--ink);
+    font-size:16px;
+    line-height:1;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background .25s ease;
+  }
+  .popup-close:hover{ background:#fff; }
+  @media (max-width:680px){
+    .popup-scroll{ grid-template-columns:1fr; }
+    .popup-visual{ min-height:160px; }
+    .popup-panel{ padding:32px 26px; }
+  }
+
+  .popup-offer{
+    margin-top:26px;
+  }
+  .offer-lede{
+    font-size:15px;
+    font-weight:600;
+    color:var(--ink);
+    max-width:none;
+  }
+  .popup-form{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:14px;
+  }
+  .popup-form input{
+    padding:12px 14px;
+    border:1px solid rgba(11,31,51,0.25);
+    border-radius:3px;
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    outline:none;
+    transition:border-color .2s ease;
+  }
+  .popup-form input:focus{ border-color:var(--blue); }
+  .popup-form button{
+    margin-top:2px;
+    padding:13px 18px;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    border-radius:3px;
+    font-size:14.5px;
+    font-weight:500;
+    cursor:pointer;
+    transition:background .25s ease;
+  }
+  .popup-form button:hover{ background:var(--navy-dim); }
+  .popup-success{
+    display:none;
+    margin-top:14px;
+  }
+  .popup-success.is-visible{ display:block; }
+  .popup-success p{
+    font-size:14.5px;
+    color:rgba(11,31,51,0.72);
+    margin-bottom:10px;
+  }
+  .popup-code{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 16px;
+    border:1px dashed var(--blue);
+    border-radius:3px;
+    background:rgba(29,95,168,0.07);
+  }
+  .popup-code span{
+    font-weight:600;
+    letter-spacing:0.03em;
+    color:var(--navy);
+    font-size:14.5px;
+  }
+  .popup-code button{
+    background:none;
+    border:none;
+    color:var(--blue-dim);
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    padding:0;
+  }
+  .popup-code button:hover{ color:var(--blue); }
+</style>
+</head>
+<body>
+
+<div class="popup-overlay" id="launchPopup">
+  <div class="popup">
+    <button class="popup-close" id="popupClose" aria-label="Close">✕</button>
+    <div class="popup-scroll">
+    <div class="popup-visual">
+      <img src="m1.JPEG" alt="Impact Water carton">
+    </div>
+    <div class="popup-panel">
+      <div class="popup-eyebrow">Now delivering</div>
+      <h2>Water that doesn't outlive you.</h2>
+      <p>Impact Water is live on quick commerce and Amazon, with a pack on its way before you finish reading this.</p>
+
+      <div class="popup-offer">
+        <p class="offer-lede">Get 10% off if you log in.</p>
+        <form class="popup-form" id="popupForm">
+          <input type="tel" id="popupPhone" placeholder="Phone number" required pattern="[0-9]{10}" maxlength="10" inputmode="numeric">
+          <input type="text" id="popupName" placeholder="Name" required>
+          <button type="submit">Get my code</button>
+        </form>
+        <div class="popup-success" id="popupSuccess">
+          <p id="popupThanks">Thanks. Here's your code:</p>
+          <div class="popup-code">
+            <span id="popupCodeValue"></span>
+            <button type="button" id="popupCopy">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup-buy">
+        <a href="https://blinkit.com/prn/impact-water-packaged-drinking-mineral-water/prid/650297" target="_blank" rel="noopener" class="buy-blinkit">
+          <span class="store">Buy on Blinkit<small>10-minute delivery</small></span>
+        </a>
+        <a href="https://www.amazon.in/Impact-Water-Minerals-Sustainable-Recyclable/dp/B0DX7F7ZS7" target="_blank" rel="noopener" class="buy-amazon">
+          <span class="store">Buy on Amazon<small>Ships pan-India</small></span>
+        </a>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand">Impact Water Co.</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About us</a>
+      <a href="products.html">Products</a>
+      <a href="sustainability.html" class="is-active">Sustainability</a>
+      <a href="where-to-buy.html">Where to buy</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-icons">
+      <a href="cart.html" class="nav-icon" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a>
+      <a href="account.html" class="nav-icon" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c1.2-3.6 4-5.4 7-5.4s5.8 1.8 7 5.4"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="sus-hero">
+  <div class="wrap">
+    <div class="sus-hero-text">
+      <div class="intro-label">Sustainability</div>
+      <h1>Paper is the point, not the packaging trend.</h1>
+      <p>Our purpose is simple: replace single-use plastic with a smarter alternative, quality drinking water in paper-based packaging, from a brand that treats the planet like it matters. Every carton is a small nudge toward a more conscious, everyday choice.</p>
+      <div class="trust-row">
+      <span>BPA free</span>
+      <span>FSC Certified</span>
+      <span>No microplastics</span>
+      <span>1% for the planet</span>
+      </div>
+    </div>
+    <div class="sus-hero-img">
+      <img src="s1.png" alt="Impact Water carton on a kraft paper surface">
+    </div>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="wrap">
+    <div class="pillars-head reveal">
+      <div class="intro-label">What makes it different</div>
+      <h2>Three ideas, every single carton.</h2>
+    </div>
+    <div class="pillar-grid">
+
+      <div class="pillar-card reveal">
+        <div class="pillar-img">
+          <img src="s2.png" alt="Impact Water carton, close-up detail shot">
+        </div>
+        <h3>Mostly paper</h3>
+        <p>Our cartons are made primarily from paperboard, sourced with responsibly managed forestry in mind.</p>
+      </div>
+
+      <div class="pillar-card reveal">
+        <div class="pillar-img">
+          <img src="s3.png" alt="Impact Water carton being recycled">
+        </div>
+        <h3>Built to recycle</h3>
+        <p>Designed to go into standard paper recycling streams, no separate program or drop-off needed.</p>
+      </div>
+
+      <div class="pillar-card reveal">
+        <div class="pillar-img">
+          <img src="s4.png" alt="Impact Water carton in a lifestyle setting">
+        </div>
+        <h3>Same water, less bottle</h3>
+        <p>The taste and quality you expect from bottled water, without asking a plastic bottle to carry it.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="bubble-section">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-eyebrow-light">The numbers</div>
+      <h2>Environmental Impact</h2>
+      <p class="section-sub">Grams of CO2 per bottle, across three common packaging types. The carton isn't just lighter to carry, it's lighter on the planet.</p>
+    </div>
+
+    <div class="glass-card reveal">
+      <div class="co2-chart">
+        <div class="bar-group">
+          <span class="bar-value">55 g CO2</span>
+          <div class="bar bar-hero" style="height:28px;"></div>
+          <span class="bar-label">Carton</span>
+          <span class="bar-tag">Lowest footprint</span>
+        </div>
+        <div class="bar-group">
+          <span class="bar-value">200 g CO2</span>
+          <div class="bar bar-muted" style="height:94px;"></div>
+          <span class="bar-label">PET Bottle</span>
+          <span class="bar-ratio">3.6&times; more than Carton</span>
+        </div>
+        <div class="bar-group">
+          <span class="bar-value">600 g CO2</span>
+          <div class="bar bar-muted" style="height:280px;"></div>
+          <span class="bar-label">Glass Bottle</span>
+          <span class="bar-ratio">11&times; more than Carton</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bubble-section">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-eyebrow-light">The comparison</div>
+      <h2>Why Settle for Plastic or Glass?</h2>
+      <p class="section-sub">Side by side, on the things that actually matter once the bottle leaves the shelf.</p>
+    </div>
+
+    <div class="score-grid reveal">
+
+      <div class="score-card">
+        <div class="score-card-head">
+          <h3>Glass Bottle</h3>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-bad">&times;</span>
+          <span><span class="score-label">Breakage risk</span><span class="score-value">Fragile</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-bad">&times;</span>
+          <span><span class="score-label">Carbon footprint</span><span class="score-value">Significantly highest</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-mid">&minus;</span>
+          <span><span class="score-label">Sustainability</span><span class="score-value">Recyclable, not biodegradable</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-good">&check;</span>
+          <span><span class="score-label">Microplastics</span><span class="score-value">Free from microplastics</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-bad">&times;</span>
+          <span><span class="score-label">Storage &amp; logistics</span><span class="score-value">Bulkier, higher costs</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-mid">&minus;</span>
+          <span><span class="score-label">Consumer perception</span><span class="score-value">Varies, premium in niches</span></span>
+        </div>
+      </div>
+
+      <div class="score-card is-best">
+        <div class="score-card-head">
+          <span class="score-badge">Best choice</span>
+          <h3>Carton</h3>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-good">&check;</span>
+          <span><span class="score-label">Breakage risk</span><span class="score-value">No risk</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-good">&check;</span>
+          <span><span class="score-label">Carbon footprint</span><span class="score-value">Significantly lowest</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-good">&check;</span>
+          <span><span class="score-label">Sustainability</span><span class="score-value">Biodegradable &amp; plant-based</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-good">&check;</span>
+          <span><span class="score-label">Microplastics</span><span class="score-value">Free from microplastics</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-good">&check;</span>
+          <span><span class="score-label">Storage &amp; logistics</span><span class="score-value">More efficient, lower costs</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-good">&check;</span>
+          <span><span class="score-label">Consumer perception</span><span class="score-value">Higher perceived value</span></span>
+        </div>
+      </div>
+
+      <div class="score-card">
+        <div class="score-card-head">
+          <h3>Plastic Bottle</h3>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-mid">&minus;</span>
+          <span><span class="score-label">Breakage risk</span><span class="score-value">Low risk</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-bad">&times;</span>
+          <span><span class="score-label">Carbon footprint</span><span class="score-value">Higher</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-bad">&times;</span>
+          <span><span class="score-label">Sustainability</span><span class="score-value">Non-biodegradable, creates waste</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-bad">&times;</span>
+          <span><span class="score-label">Microplastics</span><span class="score-value">Source of microplastics</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-mid">&minus;</span>
+          <span><span class="score-label">Storage &amp; logistics</span><span class="score-value">Efficient storage</span></span>
+        </div>
+        <div class="score-row">
+          <span class="score-icon icon-bad">&times;</span>
+          <span><span class="score-label">Consumer perception</span><span class="score-value">Lower perception, common</span></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <div class="wrap">
+    <div class="timeline-head reveal">
+      <div class="intro-label">What happens after you're done</div>
+      <h2>A carton's life is measured in weeks, not centuries.</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-step reveal">
+        <span class="step-no">01</span>
+        <div class="timeline-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#34B2CE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12h18M12 3v18"/>
+          </svg>
+        </div>
+        <h3>Delivered</h3>
+        <p>Arrives on quick commerce or by post, in the same paper-based pack every time.</p>
+      </div>
+
+      <div class="timeline-step reveal">
+        <span class="step-no">02</span>
+        <div class="timeline-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#34B2CE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>
+          </svg>
+        </div>
+        <h3>Used</h3>
+        <p>Does its job for a few days or weeks, holding the same water you'd expect from any bottle.</p>
+      </div>
+
+      <div class="timeline-step reveal">
+        <span class="step-no">03</span>
+        <div class="timeline-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#34B2CE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 7H4.5a1 1 0 0 0-.87 1.5L6 13"/>
+            <path d="M17 7h2.5a1 1 0 0 1 .87 1.5L18 13"/>
+            <path d="M9.5 3.5 7 7l2.5 3.5"/>
+            <path d="M14.5 3.5 17 7l-2.5 3.5"/>
+            <path d="M12 13v7M9 20h6"/>
+          </svg>
+        </div>
+        <h3>Recycled</h3>
+        <p>Goes straight into standard paper recycling, no separate drop-off point required.</p>
+      </div>
+
+      <div class="timeline-step reveal">
+        <span class="step-no">04</span>
+        <div class="timeline-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#34B2CE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20c4-1 6-4 6-8 0-3-1-6-1-6s4 1 6 4c1.5 2.2 1.5 5 1.5 5"/>
+            <path d="M4 20c2-6 8-9 14-9"/>
+          </svg>
+        </div>
+        <h3>Breaks down</h3>
+        <p>Leaves almost nothing behind, instead of sitting in a bin for centuries.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="wrap reveal">
+    <span class="quote-mark">&ldquo;</span>
+    <blockquote>Small everyday choices add up to real change.</blockquote>
+  </div>
+</section>
+
+<section class="certs">
+  <div class="wrap">
+    <div class="certs-inner reveal">
+
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#164B87" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>
+          </svg>
+        </div>
+        <span>BPA free</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#164B87" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20c4-1 6-4 6-8 0-3-1-6-1-6s4 1 6 4c1.5 2.2 1.5 5 1.5 5"/>
+            <path d="M4 20c2-6 8-9 14-9"/>
+          </svg>
+        </div>
+        <span>FSC Certified</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#164B87" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8"/>
+            <path d="M9.5 12.5l1.8 1.8 3.2-3.8"/>
+          </svg>
+        </div>
+        <span>No microplastics</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#164B87" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s-7-4.5-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-7 10-7 10z" transform="scale(0.8) translate(2.6,2.6)"/>
+            <path d="M12 2v3M12 19v3M4.2 6.2l2.1 2.1M17.7 15.7l2.1 2.1M2 12h3M19 12h3M4.2 17.8l2.1-2.1M17.7 8.3l2.1-2.1"/>
+          </svg>
+        </div>
+        <span>1% for the planet</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div>
+      <h2>Try the paper-first carton</h2>
+      <p>Same-day on quick commerce, or a pan-India shipment through Amazon.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="https://blinkit.com/prn/impact-water-packaged-drinking-mineral-water/prid/650297" target="_blank" rel="noopener" class="btn btn-solid">Buy on Blinkit</a>
+      <a href="https://www.amazon.in/Impact-Water-Minerals-Sustainable-Recyclable/dp/B0DX7F7ZS7" target="_blank" rel="noopener" class="btn btn-ghost">Buy on Amazon</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-family:'Fraunces',serif; font-size:19px;">Impact Water Co.</div>
+    <div class="foot-links">
+      <a href="products.html">Products</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="where-to-buy.html">Where to buy</a>
+      <a href="contact.html">Contact</a>
+      <a href="mailto:hello@impactwater.co">hello@impactwater.co</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>&copy; <span id="year"></span> Impact Water Co. All rights reserved.</span>
+    <span>Made with paper, not plastic.</span>
+  </div>
+</footer>
+
+<script src="cart.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Subtle scroll-triggered fade-ins
+  const revealEls = document.querySelectorAll('.reveal');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  // Launch popup: opens 15 seconds after page load
+  const popup = document.getElementById('launchPopup');
+  const popupClose = document.getElementById('popupClose');
+
+  function openPopup(){
+    popup.classList.add('is-open');
+  }
+  function closePopup(){
+    popup.classList.remove('is-open');
+    try { sessionStorage.setItem('iwPopupSeen', '1'); } catch (err) {}
+  }
+
+  let popupAlreadySeen = false;
+  try { popupAlreadySeen = !!sessionStorage.getItem('iwPopupSeen'); } catch (err) {}
+
+  if (!popupAlreadySeen) {
+    window.addEventListener('load', () => setTimeout(openPopup, 15000));
+  }
+  popupClose.addEventListener('click', closePopup);
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) closePopup();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup.classList.contains('is-open')) closePopup();
+  });
+
+  // 10% off signup: generates a promo code client-side for now.
+  // (No backend wired up yet: entries are kept in this browser's localStorage
+  // under 'iwLeads' until a real signup service is connected.)
+  const popupForm = document.getElementById('popupForm');
+  const popupSuccess = document.getElementById('popupSuccess');
+  const popupThanks = document.getElementById('popupThanks');
+  const popupCodeValue = document.getElementById('popupCodeValue');
+  const popupCopy = document.getElementById('popupCopy');
+
+  popupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const phone = document.getElementById('popupPhone').value.trim();
+    const name = document.getElementById('popupName').value.trim();
+    if (!phone || !name) return;
+
+    const existing = window.IWCart ? window.IWCart.findLeadByPhone(phone) : null;
+    const account = existing || {
+      name, phone,
+      code: 'IMPACT10-' + Math.random().toString(36).slice(2, 7).toUpperCase(),
+      date: new Date().toISOString()
+    };
+
+    if (window.IWCart) window.IWCart.saveAccount(account);
+
+    popupThanks.textContent = (existing ? 'Welcome back, ' : 'Thanks, ') + account.name + '. Here\'s your code:';
+    popupCodeValue.textContent = account.code;
+    popupForm.style.display = 'none';
+    popupSuccess.classList.add('is-visible');
+  });
+
+  popupCopy.addEventListener('click', () => {
+    navigator.clipboard.writeText(popupCodeValue.textContent).then(() => {
+      popupCopy.textContent = 'Copied';
+      setTimeout(() => { popupCopy.textContent = 'Copy'; }, 1500);
+    });
+  });
+</script>
+
+</body>
+</html>
